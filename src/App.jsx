@@ -6,6 +6,7 @@ import AboutUsPage from './components/AboutUsPage';
 import WelcomePage from './components/WelcomePage';
 import AdminLogin from './components/AdminLogin';
 import Cart from './components/Cart';
+import SidebarMenu from './components/SidebarMenu';
 import { DEFAULT_CATEGORIES, ORIGINS } from './constants';
 import logo from './assets/logo.png';
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [categorySearch, setCategorySearch] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // Initialize cart from localStorage if available
   const [cartItems, setCartItems] = useState(() => {
     try {
@@ -422,6 +424,17 @@ function App() {
       <footer>
         <p>&copy; 2026 رايت ووتر لتنقية المياه</p>
       </footer>
+
+      <SidebarMenu 
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        categories={DEFAULT_CATEGORIES}
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+        onAdminClick={() => setView('admin')}
+      />
     </div>
   );
 }
