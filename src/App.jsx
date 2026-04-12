@@ -138,6 +138,15 @@ function App() {
       <header className="main-header">
         <div className="header-container">
           <div className="header-left">
+            <button 
+              className="hamburger-btn mobile-only" 
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Menu"
+            >
+              <div className="hamburger-line"></div>
+              <div className="hamburger-line"></div>
+              <div className="hamburger-line"></div>
+            </button>
             <div className="logo" onClick={() => setView('catalog')} style={{ cursor: 'pointer' }}>
               رايت <span>ووتر</span>
             </div>
