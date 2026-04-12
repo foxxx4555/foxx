@@ -2476,14 +2476,44 @@ footer {
     border-radius: 3px;
   }
   
-  .header-left { display: flex; align-items: center; }
+  .header-left { display: flex; align-items: center; gap: 5px; }
+  
+  .logo { font-size: 1.1rem; }
 
   /* Hide specific desktop header parts to clean up */
   .header-nav-primary { display: none; }
-  .header-center { display: none; }
   .admin-btn-minimal { display: none; }
   
   /* Make header actions more compact since center is gone */
-  .header-container { justify-content: space-between; }
+  .header-container { 
+    justify-content: space-between; 
+    gap: 5px;
+  }
+  
+  .header-center {
+    display: flex;
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .header-tools {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+  
+  /* Hide the old categories dropdown, but keep search */
+  .compact-dropdown { display: none; }
+  
+  .search-box-chic {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .search-box-chic input {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    width: 100%;
+  }
 }
 

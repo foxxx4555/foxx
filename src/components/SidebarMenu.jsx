@@ -33,16 +33,6 @@ const SidebarMenu = ({
 
         {/* Inner Context */}
         <div className="sidebar-content">
-          
-          {/* Smart Search */}
-          <div className="sidebar-search">
-            <input
-              type="text"
-              placeholder="بحث عن منتج..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
 
           <h3 className="sidebar-title">أقسام المنتجات</h3>
           
