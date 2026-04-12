@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AboutUsPage = ({ content, onBack }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const videos = content.filter(item => item.type === 'video');
   const images = content.filter(item => item.type === 'image');
   const articles = content.filter(item => item.type === 'article');
@@ -42,10 +44,13 @@ const AboutUsPage = ({ content, onBack }) => {
             <h2 className="section-title-premium">📸 معرض الصور والتركيبات</h2>
             <div className="image-gallery-premium">
               {images.map(img => (
-                <div key={img.id} className="gallery-item-premium">
+                <div key={img.id} className="gallery-item-premium" onClick={() => setSelectedImage(img)}>
                   <div className="img-container">
                     <img src={img.media_url} alt={img.title || 'صورة الشركة'} />
                   </div>
+                  <button className="btn-read-more-overlay">
+                    🔍 عرض المزيد
+                  </button>
                   {img.title && <div className="img-caption-chic">{img.title}</div>}
                 </div>
               ))}
@@ -87,6 +92,22 @@ const AboutUsPage = ({ content, onBack }) => {
           </div>
         )}
       </div>
+
+      {/* Image Fullscreen Modal */}
+      {selectedImage && (
+        <div className="fullscreen-modal-overlay" onClick={() => setSelectedImage(null)}>
+          <button className="modal-close-icon" onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}>
+            ×
+          </button>
+          <img 
+            src={selectedImage.media_url} 
+            alt={selectedImage.title} 
+            className="fullscreen-image" 
+            onClick={(e) => e.stopPropagation()} 
+          />
+        </div>
+      )}
+
     </div>
   );
 };
