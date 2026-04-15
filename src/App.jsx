@@ -85,7 +85,7 @@ function App() {
       setLoading(true);
       const { data, error } = await supabase
         .from('products')
-        .select('*')
+        .select('id, name, category, origin, description, price, discount, image, images, is_out_of_stock, created_at')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -341,13 +341,13 @@ function App() {
                     }
                   }
 
-                  // Explicitly pick only existing DB columns
+                  // تحديد الأعمدة الموجودة في قاعدة البيانات فقط بشكل صريح
                   const insertData = {
-                    name: p.name,
-                    category: p.category,
-                    origin: p.origin,
-                    description: p.description,
-                    is_out_of_stock: p.is_out_of_stock,
+                    name: p.name || '',
+                    category: p.category || '',
+                    origin: p.origin || '',
+                    description: p.description || '',
+                    is_out_of_stock: p.is_out_of_stock || false,
                     price: sanitizedPrice,
                     discount: sanitizedDiscount,
                     images: imageUrls,
@@ -392,13 +392,13 @@ function App() {
                     }
                   }
 
-                  // Explicitly pick only existing DB columns
+                  // تحديد الأعمدة الموجودة في قاعدة البيانات فقط بشكل صريح
                   const updateData = {
-                    name: p.name,
-                    category: p.category,
-                    origin: p.origin,
-                    description: p.description,
-                    is_out_of_stock: p.is_out_of_stock,
+                    name: p.name || '',
+                    category: p.category || '',
+                    origin: p.origin || '',
+                    description: p.description || '',
+                    is_out_of_stock: p.is_out_of_stock || false,
                     price: sanitizedPrice,
                     discount: sanitizedDiscount,
                     images: imageUrls,
