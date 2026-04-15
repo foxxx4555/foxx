@@ -2513,8 +2513,8 @@ footer {
     justify-content: center;
   }
   
-  /* Hide the old categories dropdown, but keep search */
-  .compact-dropdown { display: none; }
+  /* إخفاء قائمة الأقسام القديمة في الهيدر فقط، مع الحفاظ على قائمة لوحة التحكم */
+  .header-tools .compact-dropdown { display: none; }
   
   .search-box-chic {
     width: 100%;
