@@ -217,9 +217,10 @@ const AdminPanel = ({ onAddProduct, onUpdateProduct, products, onDeleteProduct, 
                   type="button"
                   className="dropdown-trigger"
                   onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+                  style={{ color: '#003366', border: '1px solid #00336644', background: '#f8fbff' }}
                 >
-                  <span className={`arrow ${isCategoryDropdownOpen ? 'open' : ''}`}>▼</span>
-                  {formData.category}
+                  <span className={`arrow ${isCategoryDropdownOpen ? 'open' : ''}`} style={{ color: '#00AEEF' }}>▼</span>
+                  {formData.category || '--- اختر القسم ---'}
                 </button>
                 {isCategoryDropdownOpen && (
                   <div className="dropdown-menu">
