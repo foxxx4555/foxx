@@ -12,6 +12,33 @@ const ProductCatalog = ({ products, onAddToCart }) => {
     setIsModalOpen(true);
   };
 
+  // تجميع المنتجات حسب القسم
+  const groupedProducts = products.reduce((acc, product) => {
+    const cat = product.category || 'أخرى';
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(product);
+    return acc;
+  }, {});
+
+  // ترتيب الأقسام كما طلب العميل
+  const categoryOrder = [
+    "بوست",
+    "كالسيت",
+    "انفراريد",
+    "ألكلاين",
+    "طقم الكومباكت",
+    "فلاتر رايت ووتر",
+    "خزان"
+  ];
+
+  const sortedCategories = Object.keys(groupedProducts).sort((a, b) => {
+    let indexA = categoryOrder.indexOf(a);
+    let indexB = categoryOrder.indexOf(b);
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    return indexA - indexB;
+  });
+
   return (
     <div className="catalog-container">
       {products.length === 0 ? (
@@ -19,15 +46,22 @@ const ProductCatalog = ({ products, onAddToCart }) => {
           <p>عذراً، لم يتم العثور على منتجات تطابق بحثك.</p>
         </div>
       ) : (
-        <div className="product-grid">
-          {products.map((product, index) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              index={index} 
-              onAddToCart={onAddToCart} 
-              onQuickView={() => openQuickView(product)}
-            />
+        <div className="grouped-product-sections">
+          {sortedCategories.map(cat => (
+            <div key={cat} className="category-section">
+              <h2 className="category-section-title">{cat}</h2>
+              <div className="product-grid">
+                {groupedProducts[cat].map((product, index) => (
+                  <ProductCard 
+                    key={product.id} 
+                    product={product} 
+                    index={index} 
+                    onAddToCart={onAddToCart} 
+                    onQuickView={() => openQuickView(product)}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}

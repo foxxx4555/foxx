@@ -2601,3 +2601,27 @@ footer {
   }
 }
 
+
+/* Category Sections Grouping */
+.grouped-product-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+.category-section {
+  background: white;
+  padding: 20px 0;
+  border-radius: var(--radius-lg);
+}
+
+.category-section-title {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(0, 174, 239, 0.2);
+  font-weight: 800;
+  display: inline-block;
+}

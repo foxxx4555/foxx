@@ -135,8 +135,7 @@ function App() {
     const matchesCat = activeCategory === 'all' || p.category === activeCategory;
     const matchesOrigin = activeOrigin === 'all' || 
                          (activeOrigin === 'رايت ووتر' ? (p.origin === 'مصري' || p.origin === 'مصر' || p.origin === 'رايت ووتر' || !p.origin) : 
-                          activeOrigin === 'صيني' ? (p.origin === 'صيني' || p.origin === 'الصين') : 
-                          activeOrigin === 'فيتنامي' ? (p.origin === 'فيتنامي' || p.origin === 'فيتنام') : 
+                          activeOrigin === 'تركي' ? (p.origin === 'تركي' || p.origin === 'تركا') : 
                           p.origin === activeOrigin);
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesOrigin && matchesSearch;
