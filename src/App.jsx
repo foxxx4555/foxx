@@ -281,26 +281,7 @@ function App() {
               </div>
               
               <div className="filters-container-main">
-                <div className="filter-group">
-                  <span className="filter-label">حسب المنشأ:</span>
-                  <div className="origin-tabs">
-                    <button 
-                      className={`origin-tab ${activeOrigin === 'all' ? 'active' : ''}`}
-                      onClick={() => setActiveOrigin('all')}
-                    >
-                      الكل
-                    </button>
-                    {ORIGINS.map(orig => (
-                      <button 
-                        key={orig}
-                        className={`origin-tab ${activeOrigin === orig ? 'active' : ''}`}
-                        onClick={() => setActiveOrigin(orig)}
-                      >
-                        {orig}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {/* تم إزالة فلتر حسب المنشأ بناءً على طلب العميل */}
               </div>
             </section>
             <ProductCatalog products={filteredProducts} onAddToCart={handleAddToCart} />
